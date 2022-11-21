@@ -1,0 +1,8 @@
+services:
+  rtmp:
+    build: ./rtmp
+    ports:
+      - "1935:1935" # Nginx rtmp - hls
+      - "8080:8080" # Nginx Web
+    volumes:
+      - ./data:/tmp/hls

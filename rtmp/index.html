@@ -8,7 +8,10 @@
   </head>
   <body>
     <video id="videoPlayer" width="50%" controls muted="muted" autoplay>
-      <source src="/video" type="video/mp4" />
+      <source
+        src="http://localhost:8080/hls/test.m3u8"
+        type="application/x-mpegURL"
+      />
     </video>
   </body>
 </html>
