@@ -5,6 +5,8 @@ import path from "path";
 
 const app = express();
 
+app.use(express.urlencoded());
+
 app.get("/", (_: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
@@ -29,6 +31,14 @@ app.get("/video", async (req: Request, res: Response) => {
     "Content-Type": "video/mp4",
   });
   createReadStream(videoPath, { start, end }).pipe(res);
+});
+
+app.post("/auth", (req: Request, res: Response) => {
+  const streamKey = req.body.streamKey;
+
+  if (streamKey === "secretKey") return res.sendStatus(200);
+
+  res.sendStatus(403);
 });
 
 const port = process.env.PORT || 3000;

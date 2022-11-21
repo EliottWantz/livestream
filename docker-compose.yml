@@ -6,3 +6,9 @@ services:
       - "8080:8080" # Nginx Web
     volumes:
       - ./data:/tmp/hls
+
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    container_name: backend_server
